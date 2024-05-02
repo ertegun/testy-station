@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  testy-tcp:
+    image: test-station:latest
+    container_name: testy-tcp
+    restart: always
+    ports:
+      - 3334:3334
+    build: .
+    command: node server_tcp.js
+    environment:
+      TZ: Asia/Istanbul
+    volumes:
+      - ./:/nodeApps/
+  testy-udp:
+    image: test-station:latest
+    container_name: testy-udp
+    restart: always
+    ports:
+      - 3335:3335/udp
+    build: .
+    command: node server_udp.js
+    environment:
+      TZ: Asia/Istanbul
+    volumes:
+      - ./:/nodeApps/
